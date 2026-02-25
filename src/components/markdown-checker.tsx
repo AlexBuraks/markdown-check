@@ -218,7 +218,7 @@ export default function MarkdownChecker() {
                   {copied ? "Copied" : "Copy markdown"}
                 </button>
               </div>
-              <div className="prose-markdown mt-4 max-h-[34rem] overflow-auto text-sm">
+              <div className="prose-markdown style-github mt-4 max-h-[34rem] overflow-auto text-sm">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {result.markdown || "_No markdown body returned._"}
                 </ReactMarkdown>
