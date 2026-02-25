@@ -1,26 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f9f7f2;
+  --foreground: #17212f;
+  --panel: #fffefc;
+  --border: #d8d4ca;
+  --muted: #627186;
+  --success: #0d7f57;
+  --danger: #bc1f3f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at 15% 5%, #ffdcb2 0%, transparent 35%),
+    radial-gradient(circle at 90% 15%, #bfe9de 0%, transparent 35%),
+    linear-gradient(135deg, #f9f7f2 0%, #f7f4ef 50%, #f0efe8 100%);
+}
+
+a {
+  color: inherit;
+}
+
+.prose-markdown h1,
+.prose-markdown h2,
+.prose-markdown h3 {
+  font-weight: 700;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.prose-markdown p,
+.prose-markdown li {
+  margin-bottom: 0.75rem;
+}
+
+.prose-markdown pre {
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  padding: 0.8rem;
+  background: #16212c;
+  color: #f1f4f7;
+}
+
+.prose-markdown code {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.prose-markdown ul,
+.prose-markdown ol {
+  padding-left: 1.25rem;
 }
