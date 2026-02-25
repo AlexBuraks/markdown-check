@@ -266,6 +266,76 @@ export default function MarkdownChecker() {
           <li>Private/local network targets are blocked to prevent abuse.</li>
         </ul>
       </section>
+
+      <section className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-6">
+        <h2 className="text-xl font-bold">Why Markdown for Agents matters</h2>
+        <p className="mt-3 rounded-xl border border-[#e4dcc8] bg-[#fff8e8] p-4 text-sm text-[#5c4720]">
+          “Markdown has quickly become the lingua franca for agents and AI systems as a whole.”
+          {" "}
+          <a
+            href="https://blog.cloudflare.com/markdown-for-agents/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline decoration-[#c08d2f] underline-offset-4"
+          >
+            Cloudflare
+          </a>
+        </p>
+        <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
+          <li>Agents parse markdown faster and more reliably than complex HTML layouts.</li>
+          <li>Cleaner extraction improves summaries, answers, and tool decisions.</li>
+          <li>Structured markdown reduces noise from nav, scripts, and decorative UI elements.</li>
+          <li>It gives you a machine-friendly layer without changing your public page design.</li>
+        </ul>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-6">
+        <h2 className="text-xl font-bold">Quick manual: how to add it</h2>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-[var(--muted)]">
+          <li>
+            Define what content should be exposed to agents: main text, headings, tables, links,
+            and docs-like sections.
+          </li>
+          <li>
+            Configure your stack/CDN to return a markdown version when request header is
+            <code className="ml-1 font-mono text-xs">Accept: text/markdown</code>.
+          </li>
+          <li>
+            Return markdown with
+            <code className="ml-1 font-mono text-xs">Content-Type: text/markdown</code>.
+          </li>
+          <li>
+            Keep markdown semantically clean: heading hierarchy, short sections, valid links, and
+            code fences where needed.
+          </li>
+          <li>
+            Validate using this tool: check status, content type, optional markdown headers, and
+            preview quality.
+          </li>
+        </ol>
+        <p className="mt-4 text-sm text-[var(--muted)]">
+          Reference implementation and details:
+          {" "}
+          <a
+            href="https://blog.cloudflare.com/markdown-for-agents/"
+            target="_blank"
+            rel="noreferrer"
+            className="font-semibold text-[#184c45] underline underline-offset-4"
+          >
+            Cloudflare: Markdown for Agents
+          </a>
+        </p>
+      </section>
+
+      <section className="mt-6 rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-6">
+        <h2 className="text-xl font-bold">Business benefits</h2>
+        <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
+          <li>Higher chance your content is accurately used in AI answers and citations.</li>
+          <li>Lower parsing friction for crawlers and agent frameworks.</li>
+          <li>Better control over what machines consume from each URL.</li>
+          <li>Faster experimentation: you can iterate markdown without redesigning frontend pages.</li>
+        </ul>
+      </section>
     </div>
   );
 }
