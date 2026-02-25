@@ -196,38 +196,20 @@ export default function MarkdownChecker() {
 
       {result ? (
         <section className="mt-6 space-y-5">
-          <div
-            className={`rounded-2xl border p-5 ${
-              result.found
-                ? "border-[#bde2d3] bg-[#effaf5]"
-                : "border-[#e8dcc5] bg-[#fffaf0]"
-            }`}
-          >
-            <p
-              className={`text-xl font-extrabold ${
-                result.found ? "text-[var(--success)]" : "text-[#8a5a0a]"
-              }`}
-            >
-              {result.found ? "Markdown found" : "Markdown not found"}
-            </p>
-            <p className="mt-2 text-sm text-[var(--muted)]">{result.reason}</p>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <DetailItem label="Status" value={`${result.response.status} ${result.response.statusText}`} />
-            <DetailItem label="Content-Type" value={result.response.contentType ?? "-"} />
-            <DetailItem label="Latency" value={`${result.response.latencyMs} ms`} />
-            <DetailItem label="x-markdown-tokens" value={result.response.xMarkdownTokens ?? "-"} />
-            <DetailItem label="Content-Length" value={result.response.contentLength ?? "-"} />
-            <DetailItem label="Redirect Location" value={result.response.location ?? "-"} />
-            <DetailItem label="Requested URL" value={result.request.url} />
-            <DetailItem label="Used User-Agent" value={result.request.userAgent} />
-          </div>
+          {!result.found ? (
+            <div className="rounded-2xl border border-[#e8dcc5] bg-[#fffaf0] p-5">
+              <p className="text-xl font-extrabold text-[#8a5a0a]">Markdown not found</p>
+              <p className="mt-2 text-sm text-[var(--muted)]">{result.reason}</p>
+            </div>
+          ) : null}
 
           {result.found ? (
             <article className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <h2 className="text-lg font-bold">Markdown preview</h2>
+                <div>
+                  <h2 className="text-lg font-bold text-[var(--success)]">Markdown found</h2>
+                  <p className="mt-1 text-xs text-[var(--muted)]">{result.reason}</p>
+                </div>
                 <button
                   onClick={copyMarkdown}
                   type="button"
@@ -248,6 +230,17 @@ export default function MarkdownChecker() {
               ) : null}
             </article>
           ) : null}
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <DetailItem label="Status" value={`${result.response.status} ${result.response.statusText}`} />
+            <DetailItem label="Content-Type" value={result.response.contentType ?? "-"} />
+            <DetailItem label="Latency" value={`${result.response.latencyMs} ms`} />
+            <DetailItem label="x-markdown-tokens" value={result.response.xMarkdownTokens ?? "-"} />
+            <DetailItem label="Content-Length" value={result.response.contentLength ?? "-"} />
+            <DetailItem label="Redirect Location" value={result.response.location ?? "-"} />
+            <DetailItem label="Requested URL" value={result.request.url} />
+            <DetailItem label="Used User-Agent" value={result.request.userAgent} />
+          </div>
 
           <article className="rounded-2xl border border-[var(--border)] bg-[var(--panel)] p-5">
             <h2 className="text-lg font-bold">Raw headers</h2>
